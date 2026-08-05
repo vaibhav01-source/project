@@ -14,22 +14,6 @@ def summarize_txt(text):
 
     return response.text
 
-'''
-from openai import OpenAI
-client2 = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-def abuse_detn(text):
-    response = client2.moderations.create(
-        model="omni-moderation-latest",
-        input=text)
-    result=response.results[0]
-    if result.flagged:
-        return "⚠️ Abusive/Inappropriate content detected."
-    else:
-        return "✅ Content is safe."
-
-
-'''
 
 def abuse_detn(text):
 
