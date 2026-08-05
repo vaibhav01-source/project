@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Utility Hub | Text Summarizer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='summary_style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <nav class="navbar">
+
+        <div class="nav-left">
+            <a href="/profile">🏠 Dashboard</a>
+            <a href="/summary">📝 Summarizer</a>
+            <a href="#">🚫 Abuse Detection</a>
+            <a href="#">😊 Sentiment Analysis</a>
+        </div>
+
+        <div class="nav-right">
+            <a href="/logout" class="logout-btn">🚪 Log Out</a>
+        </div>
+
+    </nav>
+
+    <h1>🤖 AI Utility Hub</h1>
+    <div class="card">
+
+        <h2>📝 Text Summarizer</h2>
+        <p>Paste your text below and let AI generate a concise summary.</p>
+
+        <form action="/perform_summary" method="POST">
+
+            <label for="text">Enter your text</label>
+
+            <textarea
+                id="text"
+                name="summarize_text"
+                placeholder="Paste your text here..."
+                required></textarea>
+
+            <button type="submit">Generate Summary</button>
+
+        </form>
+
+        {% if summary %}
+
+        <div class="output">
+            <h3>Summary</h3>
+            <p>{{ summary }}</p>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

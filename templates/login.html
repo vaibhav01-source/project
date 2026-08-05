@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login page</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='login_style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>NLP | Login Page</h1>
+        <form action="/perform_login" method="post">
+            <h3>LOGIN HERE</h3>
+            {%if message%}
+                <p class="error">{{message}}</p>
+            {%endif%}
+
+            {%if message1%}
+                <p class="success">{{message1}}</p>
+            {%endif%}
+
+
+            <input type="email" name ="user_email" placeholder="Enter Your Email"> <br><br>
+            <input type="password" name="user_password" placeholder="Password"><br><br>
+            <button type="submit" >Login</button>
+
+            <p>NOT A USER ? <a href="/register">Register here</a></p>
+        </form>
+    </div>
+
+
+
+</body>
+</html>
