@@ -39,6 +39,12 @@
             <p>{{ sentiment_analysis }}</p>
         </div>
         {% endif %}
+
+        {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+        {% endif %}
     </div>
 </div>
 </body>
