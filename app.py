@@ -62,8 +62,12 @@ def perform_summary():
     if session.get('logged_in'):
         if request.method=='POST':
             text=request.form.get('summarize_text')
-            summary=summarize_txt(text)
+            success,summary=summarize_txt(text)
 
+            if not success:
+                return render_template('summary.html',
+                                       error=" The free Gemini API limit has been reached. " \
+                                       "Please try again later :) ")
             return render_template('summary.html',summary=summary)
         return render_template('summary.html')
     else:
@@ -81,7 +85,12 @@ def perform_abuse_det():
     if session.get('logged_in'):
         if request.method=='POST':
             text=request.form.get('abuse_det')
-            det=abuse_detn(text)
+            success,det=abuse_detn(text)
+
+            if not success:
+                            return render_template('abuse_det.html',
+                                                   error=" The free Gemini API limit has been reached. " \
+                                                   "Please try again later :) ")
 
             return render_template('abuse_det.html',abuse_det=det)
         return render_template('abuse_det.html')
@@ -99,8 +108,13 @@ def perform_senti_analysis():
     if session.get('logged_in'):
         if request.method=='POST':
             text=request.form.get('sentiment_analysis')
-            det=sentiment_analysis(text)
+            success,det=sentiment_analysis(text)
 
+            if not success:
+                                        return render_template('senti.html',
+                                                               error=" The free Gemini API limit has been reached. " \
+                                                               "Please try again later :) ")
+            
             return render_template('senti.html',sentiment_analysis=det)
         return render_template('senti.html')
     else:
@@ -112,3 +126,5 @@ def logout():
 
 if __name__=="__main__":
     app.run(debug=True)
+
+
