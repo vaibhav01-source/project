@@ -5,14 +5,24 @@ import os
 load_dotenv()
 client = genai.Client()
 
+#common api handler
+def generate_ai_response(prompt):
+    try:
+        response = client.models.generate_content(
+        model="gemini-3.6-flash",
+        contents=prompt
+        )
+
+        return True,response.text
+    
+    except Exception as e:
+        print("Gemini API Error:",e)
+        return False,None
 
 def summarize_txt(text):
-    response = client.models.generate_content(
-    model="gemini-3.6-flash",
-    contents=f"summarize this text:\n\n{text}"
-    )
+    prompt=f"summarize this text clearly and concisely:\n\n{text}"
 
-    return response.text
+    return generate_ai_response(prompt)
 
 
 def abuse_detn(text):
@@ -30,12 +40,7 @@ def abuse_detn(text):
     {text}
     """
 
-    response = client.models.generate_content(
-        model="gemini-3.6-flash",
-        contents=prompt
-    )
-
-    return response.text.strip()
+    return generate_ai_response(prompt)
 
 def sentiment_analysis(text):
     prompt = f"""
@@ -70,9 +75,4 @@ def sentiment_analysis(text):
     "{text}"
     """
 
-    response = client.models.generate_content(
-        model="gemini-3.6-flash",
-        contents=prompt
-    )
-
-    return response.text
+    return generate_ai_response(prompt)
