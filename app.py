@@ -88,6 +88,24 @@ def perform_abuse_det():
     else:
         return redirect('/')
 
+@app.route('/sentiment_analysis')
+def abuse_det():
+    if session.get('logged_in'):
+        return render_template('senti.html')
+    else:
+        return redirect('/')
+@app.route('/perform_sentiment_analysis',methods=['GET','POST'])
+def perform_abuse_det():
+    if session.get('logged_in'):
+        if request.method=='POST':
+            text=request.form.get('sentiment_analysis')
+            det=abuse_detn(text)
+
+            return render_template('senti.html',sentiment_analysis=det)
+        return render_template('senti.html')
+    else:
+        return redirect('/')
+
 if __name__=="__main__":
     app.run(debug=True)
 
