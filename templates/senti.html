@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+en<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Utility Hub | Abuse Detection </title>
+    <title>SynGEN AI | Sentiment Analysis </title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='abuse_det_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sentiment_analysis.css') }}">
 </head>
 <body>
 <div class="container">
@@ -20,7 +20,7 @@
             <a href="/logout" class="logout-btn"> Log Out</a>
         </div>
     </nav>
-    <h1>🤖 AI Utility Hub</h1>
+    <h1>🤖 SynGEN AI</h1>
     <div class="card">
         <h2>😊 Sentiment Analysis</h2>
         <p>Paste your text below and let AI do Sentiment Analysis.</p>
@@ -36,7 +36,7 @@
         {% if abuse_det %}
         <div class="output">
             <h3>Sentiment Analysis</h3>
-            <p>{{ abuse_det }}</p>
+            <p>{{ sentiment_analysis }}</p>
         </div>
         {% endif %}
     </div>
