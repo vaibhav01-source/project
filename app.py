@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request,redirect,session
-from api import summarize_txt,abuse_detn
+from api import sentiment_analysis, summarize_txt,abuse_detn
 from dotenv import load_dotenv
 import os
 
@@ -89,23 +89,23 @@ def perform_abuse_det():
         return redirect('/')
 
 @app.route('/sentiment_analysis')
-def abuse_det():
+def senti_analysis():
     if session.get('logged_in'):
         return render_template('senti.html')
     else:
         return redirect('/')
 @app.route('/perform_sentiment_analysis',methods=['GET','POST'])
-def perform_abuse_det():
+def perform_senti_analysis():
     if session.get('logged_in'):
         if request.method=='POST':
             text=request.form.get('sentiment_analysis')
-            det=abuse_detn(text)
+            det=sentiment_analysis(text)
 
             return render_template('senti.html',sentiment_analysis=det)
         return render_template('senti.html')
     else:
         return redirect('/')
 
+
 if __name__=="__main__":
     app.run(debug=True)
-
