@@ -157,6 +157,13 @@ button:hover{
     text-decoration:none;
     transition:.3s;
 }
+.error-message {
+    color: rgb(220, 11, 109);
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 8px;
+    text-align: center;
+}
 
 .logout-btn:hover{
     background:#ef4444;
