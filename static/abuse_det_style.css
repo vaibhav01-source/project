@@ -11,7 +11,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:20px;
+    padding-top:120px;
 }
 
 .container{
@@ -157,6 +157,12 @@ button:hover{
     text-decoration:none;
     transition:.3s;
 }
+
+.logout-btn:hover{
+    background:#ef4444;
+    border-color:#ef4444;
+}
+
 .error-message {
     color: rgb(220, 11, 109);
     padding: 12px;
@@ -164,8 +170,89 @@ button:hover{
     border-radius: 8px;
     text-align: center;
 }
+/*    TABLET */
 
-.logout-btn:hover{
-    background:#ef4444;
-    border-color:#ef4444;
+@media (max-width: 900px){
+
+    .navbar{
+        padding: 12px 20px;
+    }
+
+    .nav-left{
+        gap: 15px;
+    }
+
+    .nav-left a{
+        font-size: 14px;
+    }
+
+    .logout-btn{
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+
+/*    MOBILE*/
+
+@media (max-width: 650px){
+
+    .navbar{
+        position: fixed;
+        padding: 10px 15px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .nav-left{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .nav-left a{
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+
+    .nav-right{
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .logout-btn{
+        display: block;
+        width: 100%;
+        padding: 8px;
+    }
+
+    /* Prevent navbar from covering the page */
+    body{
+        padding-top: 150px;
+    }
+}
+
+
+@media (max-width: 400px){
+
+    .navbar{
+        padding: 8px 10px;
+    }
+
+    .nav-left{
+        gap: 5px;
+    }
+
+    .nav-left a{
+        font-size: 12px;
+        padding: 5px 6px;
+    }
+
+    body{
+        padding-top: 160px;
+    }
 }
